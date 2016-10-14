@@ -51,4 +51,14 @@ $$Sales = \beta_{0} + \beta_{1}TV + \beta_{2}Radio + \beta_{3}Newspaper$$
 
 # Results 
 
+## Single Linear Regression
+
+
+
+
+
+# Conclusions
+
+In conclusion, the multiple linear regression is more accurate than the single linear regressions. From the tables above (`F-statistic`) from multiple regression, at the very least one of the predictors can be used to predict `Sales`. Nevertheless, we also find that not all of the predictors are statistically significant (from the p-values). Hence, the prediction would be more accurate if the `newspaper` budget is not avoided based on its corresponding p-value. Other indicators including Residual Standarnd Error, R^{2} and F-statistic also comment on the fit of the linear model - the smaller these vaules/statistics or approaching 0, the more accurately the model represents the data.
+ 
 
