@@ -20,4 +20,7 @@ cor(advert[2:5])
 sink()
 
 #Saving the correlation matrix to a Rdata file
-save(list = mat.cor, file = "~/Documents/stat159-fall2016-hw03/data/correlation-matrix.Rdata")
+save(mat.cor, 
+     file = "~/Documents/stat159-fall2016-hw03/data/correlation-matrix.Rdata")
+
+
