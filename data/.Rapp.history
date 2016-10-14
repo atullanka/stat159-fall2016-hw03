@@ -1,0 +1,3 @@
+load("/Users/atullanka/Documents/stat159-fall2016-hw03/data/regression.Rdata")
+ls
+ls()
