@@ -17,7 +17,7 @@ r_squared <- function(input) {
 f_statistic <- function(input) {
   p <- input$rank -1
   n <- length(input$residuals)
-  f.stat <- (total_sum_squares(w) - residual_sum_squares(w)) * (n-p-1) / (p*(residual_sum_squares(w)))
+  f.stat <- (total_sum_squares(input) - residual_sum_squares(input)) * (n-p-1) / (p*(residual_sum_squares(input)))
   return(f.stat)
 }
 
