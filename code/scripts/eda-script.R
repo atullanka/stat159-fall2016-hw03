@@ -14,13 +14,13 @@ mat.cor <- cor(advert[2:5])
 pairs(mat.cor, main = "Scatterplot Matrix")
 
 #Saving the output to a .txt file
-sink("eda-output.txt")
+sink("data/eda-output.txt")
 summary(advert[2:5])
 cor(advert[2:5])
 sink()
 
 #Saving the correlation matrix to a Rdata file
 save(mat.cor, 
-     file = "~/Documents/stat159-fall2016-hw03/data/correlation-matrix.Rdata")
+     file = "data/correlation-matrix.Rdata")
 
 

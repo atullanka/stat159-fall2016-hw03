@@ -12,7 +12,7 @@ summary.lm.newspaper <- summary(lm.newspaper)
 summary.lm.all <- summary(lm.all)
 
 #Saving to a RData file
-save(summary.lm.TV,summary.lm.radio, summary.lm.newspaper, summary.lm.all, file = "~/Documents/stat159-fall2016-hw03/data/regression.Rdata")
+save(summary.lm.TV,summary.lm.radio, summary.lm.newspaper, summary.lm.all, file = "data/regression.Rdata")
 
 #Scatterplots for TV, radio and newspaper
 
