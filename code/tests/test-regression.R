@@ -1,7 +1,7 @@
 source("../functions/regression-functions.R")
 library(testthat)
 
-# test for the residual_sum_squares function
+# Test for the residual_sum_squares function
 context("Test for the residual_sum_squares function")
 test_that("RSS as expected", {
   reg = lm(mpg ~ disp + hp, data = mtcars)
@@ -11,7 +11,7 @@ test_that("RSS as expected", {
   expect_length(residual_sum_squares(reg),1)
 })
 
-#test the total_sum_squares function
+# Test for the total_sum_squares function
 context("Test for total_sum_squres function")
 test_that("TSS as expected", {
   reg = lm(mpg ~ disp + hp, data = mtcars)
@@ -22,7 +22,7 @@ test_that("TSS as expected", {
   expect_length(total_sum_squares(reg),1)
 })
 
-#test the r_square function
+# Test for the r_square function
 context("Test for r_square function")
 test_that ("r square as expected", {
   reg = lm(mpg ~ disp + hp, data = mtcars)
@@ -32,7 +32,7 @@ test_that ("r square as expected", {
   expect_length(r_squared(reg),1)
 })
 
-#test the F-statistic function
+# Test for the F-statistic function
 context("Test for F-statistic function")
 test_that ("F-statistic as expected", {
   reg = lm(mpg ~ disp + hp, data = mtcars)
@@ -42,7 +42,7 @@ test_that ("F-statistic as expected", {
   expect_length(f_statistic(reg), 1)
 })
 
-#test the residual_std_error function
+# Test for the residual_std_error function
 context("Test for residual_std_error function")
 test_that ("RSE as expected", {
   reg = lm(mpg ~ disp + hp, data = mtcars)

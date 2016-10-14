@@ -4,8 +4,8 @@ residual_sum_squares <- function(input) {
 }
 
 total_sum_squares <- function(input) {
-  mean.input <- input$model[[1]] 
-  tss <- sum((input$residuals - mean.input)^2)
+  mean.input <- mean(input$model[[1]])
+  tss <- sum((input$model[[1]] - mean.input)^2)
   return(tss)
 }
 
