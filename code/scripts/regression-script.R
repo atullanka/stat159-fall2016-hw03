@@ -44,5 +44,6 @@ apply(cbind(advert$Newspaper,advert$Sales,predict(lm.newspaper)),1,
       function(diff){lines(diff[c(1,1)],diff[2:3], col = 'red', lty = 2)})
 
 
-
+#Residual plot, QQ plot and Scale Location
+plot(lm.all, caption = list("Residuals vs Fitted", "Normal Q-Q","Scale-Location"))
 
