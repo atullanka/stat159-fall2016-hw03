@@ -53,8 +53,68 @@ $$Sales = \beta_{0} + \beta_{1}TV + \beta_{2}Radio + \beta_{3}Newspaper$$
 
 ## Single Linear Regression
 
+Using `lm()` to fit the data into a simple linear model, the regression coefficients are as follows:
 
+```{r,echo=FALSE, results='asis',message=FALSE}
+advert <- read.csv('http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv')
+library(xtable)
+print(xtable(lm(advert$Sales ~ advert$TV), caption = "Regression Coefficents for TV~Sales"), comment = FALSE)
+```
 
+```{r,echo=FALSE, results='asis',message=FALSE}
+advert <- read.csv('http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv')
+library(xtable)
+print(xtable(lm(advert$Sales ~ advert$Radio), caption = "Regression Coefficents for TV~Radio"), comment = FALSE)
+```
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+advert <- read.csv('http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv')
+library(xtable)
+print(xtable(lm(advert$Sales ~ advert$Newspaper), caption = "Regression Coefficents for TV~Newspaper"), comment = FALSE)
+```
+
+The scatterplots with their respective regression lines are as follows:
+
+![Figure 5: Scatterplot for Sales and TV](../images/scatterplot-tv-sales.png)
+![Figure 6: Scatterplot for Sales and Radio](../images/scatterplot-radio-sales.png)
+![Figure 7: Scatterplot for Sales and Newspaper](../images/scatterplot-newspaper-sales.png)
+
+Quality Indices calculated with the regression analysis are as follows:
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+source('../code/functions/regression-functions.R')
+TV.Table = matrix(nrow = 3, ncol = 2)
+Quantity = c("RSE", "R^2", "F-statistic")
+TV.Value = c(residual_std_error(lm(advert$Sales ~ advert$TV)), r_squared(lm(advert$Sales ~ advert$TV)), f_statistic(lm(advert$Sales ~ advert$TV)))
+TV.Table[,1] = Quantity
+TV.Table[,2] = TV.Value
+colnames(TV.Table) = c('Quantity', 'Value')
+print(xtable(TV.Table, caption = "Quality Indices of Regression of Sales and TV"), comment = FALSE)
+```
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+source('../code/functions/regression-functions.R')
+Radio.Table = matrix(nrow = 3, ncol = 2)
+Quantity = c("RSE", "R^2", "F-statistic")
+Radio.Value = c(residual_std_error(lm(advert$Sales ~ advert$Radio)), r_squared(lm(advert$Sales ~ advert$Radio)), f_statistic(lm(advert$Sales ~ advert$Radio)))
+Radio.Table[,1] = Quantity
+Radio.Table[,2] = Radio.Value
+colnames(Radio.Table) = c('Quantity', 'Value')
+print(xtable(Radio.Table, caption = "Quality Indices of Regression of Sales and Radio"), comment = FALSE)
+```
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+source('../code/functions/regression-functions.R')
+News.Table = matrix(nrow = 3, ncol = 2)
+Quantity = c("RSE", "R^2", "F-statistic")
+News.Value = c(residual_std_error(lm(advert$Sales ~ advert$Newspaper)), r_squared(lm(advert$Sales ~ advert$Newspaper)), f_statistic(lm(advert$Sales ~ advert$Newspaper)))
+News.Table[,1] = Quantity
+News.Table[,2] = News.Value
+colnames(TV.Table) = c('Quantity', 'Value')
+print(xtable(News.Table, caption = "Quality Indices of Regression of Sales and Newspaper"), comment = FALSE)
+```
+
+## Multiple Regression Analysis
 
 
 # Conclusions
