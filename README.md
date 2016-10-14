@@ -59,6 +59,7 @@ stat159-fall2016-hw03/
 ```
 
 For a user to be able to recreate and navigate through the entire repository:
+
 1. Clone/Download the repository on Git
 2. Use `cd` in the terminal to set the current directory to the repository
 3. Run the Makefile command `make all` to run the scripts
