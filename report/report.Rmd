@@ -1,0 +1,54 @@
+---
+title: "Report"
+author: Atul Lanka
+date: October 14th, 2016 
+output: pdf_document
+---
+
+# Abstract
+
+This report will replicate the main results displayed in section 3.2 **Multiple Linear Regression** (chapter 3) of the book *An Introduction to Statistical Learning*.
+
+# Introduction
+
+The primary goal of this analysis is to give advice on how to boost sales of the  product given the current information on advetising budgets. More specifically, the idea is to determine whether there exists an correalation between advertising and sales, and if so, formulate an accurate model that can be used to predict sales from media budget. For this analysis in particular, a combination of simple linear regression and multiple linear regression.
+
+# Data
+
+The Advertising data set comprises of the Sales (in thousands of units) in 200 different markets, along with the advertising budgets (in thousands of dollars)  in each market for three different forms of media: TV, Radio, and Newspaper. In this report, the relation between each of them and Sales, and the possible relation between Sales and the three of them combined are observed and studied/analyzed.
+
+We may first look at the table of summary statistics below:
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+advert <- read.csv('http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv')
+library(xtable)
+print(xtable(summary(advert[2:5]), caption = "Summary Statistics"), comment = FALSE)
+```
+
+Histograms for each variable: 
+
+![Figure 1: Histogram for TV](../images/histogram-tv.png)
+
+![Figure 2: Histogram for Radio](../images/histogram-radio.png)
+
+![Figure 3: Histogram for Newspaper](../images/histogram-newspaper.png)
+
+![Figure 4: Histogram for Sales](../images/histogram-sales.png)
+
+# Methodology
+
+## Single Linear Regression
+
+We consider each media separately from the data set - TV, Radio and Newspaper - and study its relationship with the dependent variable Sales. The null hypothesis is that each of the independent variables would not have an effect on Sales, and the alternate hypothesis suggests otherwise. Thus a linear model is generated:
+
+$$Sales = \beta_{0} + \beta_{1} (TV | Radio | Newspaper)$$
+
+## Multiple Linear Regression
+
+It would be a better approach to expand the model of Sales with multiple predictors rather than single predictors each time, avoiding an excess of linear models. This is done by accomodating each predictor with their respective slope coefficient in a single model. Thus the multiple linear regression model takes the form:
+
+$$Sales = \beta_{0} + \beta_{1}TV + \beta_{2}Radio + \beta_{3}Newspaper$$
+
+# Results 
+
+

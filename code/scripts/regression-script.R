@@ -12,7 +12,7 @@ summary.lm.newspaper <- summary(lm.newspaper)
 summary.lm.all <- summary(lm.all)
 
 #Saving to a RData file
-save(summary.lm.TV,summary.lm.radio, summary.lm.newspaper, summary.lm.all, file = "data/regression.Rdata")
+save(summary.lm.TV,summary.lm.radio, summary.lm.newspaper, summary.lm.all, file = "../../data/regression.Rdata")
 
 #Scatterplots for TV, radio and newspaper
 
@@ -47,7 +47,7 @@ abline(lm.newspaper[[1]][[1]], lm.newspaper[[1]][[2]], col = 'blue', lwd = 1.5)
 #Adding the vertical lines between the points and the regression line to depict accuracy
 apply(cbind(advert$Newspaper,advert$Sales,predict(lm.newspaper)),1,
       function(diff){lines(diff[c(1,1)],diff[2:3], col = 'red', lty = 2)})
-
+dev.off()
 
 #Residual plot, QQ plot and Scale Location
 

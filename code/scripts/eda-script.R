@@ -28,13 +28,12 @@ pairs(mat.cor, main = "Scatterplot Matrix")
 dev.off()
 
 #Saving the output to a .txt file
-sink("data/eda-output.txt")
-summary(advert[2:5])
-cor(advert[2:5])
+sink("../../data/eda-output.txt")
+summary.advert
+mat.cor
 sink()
 
 #Saving the correlation matrix to a Rdata file
-save(mat.cor, 
-     file = "data/correlation-matrix.Rdata")
+save(mat.cor, file = "../../data/correlation-matrix.Rdata")
 
 
