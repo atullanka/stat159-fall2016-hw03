@@ -24,7 +24,7 @@ mat.cor <- cor(advert[2:5])
 
 #Scatterplot Matrix 
 png(file = "../../images/scatterplot-matrix.png")
-pairs(mat.cor, main = "Scatterplot Matrix")
+pairs(advert[2:5], main = "Scatterplot Matrix")
 dev.off()
 
 #Saving the output to a .txt file

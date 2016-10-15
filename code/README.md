@@ -1,1 +1,1 @@
-This folder contains the code
+This folder contains all the code required for the regrssion analysis. The subfolders in here are the scripts to run the analysis, the functions that determine various indices for regression, and tests that verify the accuracy of the function.

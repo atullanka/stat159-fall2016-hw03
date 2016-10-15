@@ -18,7 +18,7 @@ tests:
 	 Rscript code/test-that.R
 
 report: report/report.rmd regression eda 
-	Rscript -e 'library("rmarkdown");library("xtable"); rmarkdown::render("report/report.Rmd")'
+	Rscript -e 'library("rmarkdown"); render("report/report.Rmd",output_format = "pdf_document")'
 
 
 clean: 

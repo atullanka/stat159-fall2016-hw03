@@ -1,7 +1,7 @@
 ---
 title: "Report"
-author: Atul Lanka
-date: October 14th, 2016 
+author: "Atul Lanka"
+date: "October 14th, 2016"
 output: pdf_document
 ---
 
@@ -35,13 +35,15 @@ Histograms for each variable:
 
 ![Figure 4: Histogram for Sales](../images/histogram-sales.png)
 
+\newpage
+
 # Methodology
 
 ## Single Linear Regression
 
 We consider each media separately from the data set - TV, Radio and Newspaper - and study its relationship with the dependent variable Sales. The null hypothesis is that each of the independent variables would not have an effect on Sales, and the alternate hypothesis suggests otherwise. Thus a linear model is generated:
 
-$$Sales = \beta_{0} + \beta_{1} (TV | Radio | Newspaper)$$
+$$Sales = \beta_{0} + \beta_{1} (TV / Radio / Newspaper)$$
 
 ## Multiple Linear Regression
 
@@ -92,6 +94,8 @@ colnames(TV.Table) = c('Quantity', 'Value')
 print(xtable(TV.Table, caption = "Quality Indices of Regression of Sales and TV"), comment = FALSE)
 ```
 
+In the case of TV, the p-value is below 0.05 and the RSE and R^2 values are relatively small. This is reason enough to reject the null hypothesis and establish that TV advertising does impact Sales in a positive, linear correlation (as can be seen in the graph).
+
 ```{r,echo=FALSE, results='asis',message=FALSE}
 source('../code/functions/regression-functions.R')
 Radio.Table = matrix(nrow = 3, ncol = 2)
@@ -102,6 +106,9 @@ Radio.Table[,2] = Radio.Value
 colnames(Radio.Table) = c('Quantity', 'Value')
 print(xtable(Radio.Table, caption = "Quality Indices of Regression of Sales and Radio"), comment = FALSE)
 ```
+
+Radio advertising budgets too have a similar impact on Sales, although from comparing 
+the two scatter plots, Radio's linear regression is not as accurate as that of TV's.
 
 ```{r,echo=FALSE, results='asis',message=FALSE}
 source('../code/functions/regression-functions.R')
@@ -114,6 +121,8 @@ colnames(TV.Table) = c('Quantity', 'Value')
 print(xtable(News.Table, caption = "Quality Indices of Regression of Sales and Newspaper"), comment = FALSE)
 ```
 
+The same can be said about Newspaper, for the most part. The RSE value is large than that of TV, suggesting that the linear model is not the best fit necessarily. Nevertheless, the low p-value (statistical significance) allows the the null hypothesis to be rejected. 
+
 ## Multiple Regression Analysis
 
 Fitting all 4 variables to a simple linear regression model, the regression coefficients are calculated:
@@ -124,6 +133,8 @@ library(xtable)
 print(xtable(lm(advert$Sales ~ advert$TV + advert$Radio + advert$Newspaper), caption = 'Simple regression of Sales on Newspaper, TV and Radio'), comment = FALSE)
 ```
 
+From this table we see that the p-value for Newspaper is not smaller than 0.05 and compartively larger than TV and Radio. Hence, Newspaper advertising budget, in relation to Sales, is not statistically significant. 
+
 The correlation matrix is as follows:
 
 ```{r,echo=FALSE,results='asis',message=FALSE,fig.align='center'}
@@ -132,9 +143,14 @@ library(xtable)
 print(xtable(cor(advert[2:5]), caption = 'Correlation Matrix for Sales on Newspaper, TV and Radio'), comment = FALSE)
 ```
 
+Studying this correlation matrix, keeping in mind that Newspaper advertising is not statistically significant, it is observed that TV has low correlation with Radio and Newspaper, while having a high correlation value with TV. This suggests that TV has a strong impact on Sales while Radio and Newspaper perform differntly but equally different. Newspaper has the lowest correlation value with Sales, indicating that Newspaper have the least impact on Sales. 
+
 Finally, the matrix of coefficients can be distributed on a scatter plot:
 
 ![Figure 8: Scatterplot Matrix](../images/scatterplot-matrix.png)
+
+The plots reinforce the conclusions made for the correlation matrix. 
+
 
 The Quality Indices for the Multiple Linear Regression are:
 
@@ -149,14 +165,20 @@ colnames(TV.Table) = c('Quantity', 'Value')
 print(xtable(All.Table, caption = "Quality Indices of the Multiple Linear Regression of Sales and Newspaper, TV and Radio"), comment = FALSE)
 ```
 
-3 more plots can represent the linearity of the relationship between Sales and the 3 media outlets: 
+The RSE and the R^{2} value are low, significantly lower than the values computed in any of the 3 single linear regressions. This suggests that the multiple regression analysis create a linear model that is a relatively and comparatively good for for the data. 
 
-![Figure 9: Scatterplot Matrix](../images/residual-plot.png)
-![Figure 10: Scatterplot Matrix](../images/normal-qq-plot.png)
-![Figure 11: Scatterplot Matrix](../images/scale-location-plot.png)
+\newpage
+
+3 more plots can represent the relationship between Sales and the 3 media outlets: 
+
+![Figure 9: Residual Plot](../images/residual-plot.png)
+![Figure 10: Normal Q-Q Plot](../images/normal-qq-plot.png)
+![Figure 11: Scale Location Plot](../images/scale-location-plot.png)
+
+\newpage
 
 # Conclusions
 
-In conclusion, the multiple linear regression is more accurate than the single linear regressions. From the tables above (`F-statistic`) from multiple regression, at the very least one of the predictors can be used to predict `Sales`. Nevertheless, we also find that not all of the predictors are statistically significant (from the p-values). Hence, the prediction would be more accurate if the `newspaper` budget is not avoided based on its corresponding p-value. Other indicators including Residual Standarnd Error, R^{2} and F-statistic also comment on the fit of the linear model - the smaller these vaules/statistics or approaching 0, the more accurately the model represents the data.
+In conclusion, the multiple linear regression is more accurate than the single linear regressions. From the tables above (`F-statistic`) from multiple regression, at the very least one of the predictors can be used to predict `Sales`. Nevertheless, we also find that not all of the predictors are statistically significant (from the p-values). Hence, the prediction would be more accurate if the `newspaper` budget is not avoided based on its corresponding p-value. Other indicators, including Residual Standarnd Error, R^{2} and F-statistic, also comment on the fit of the linear model - the smaller these vaules/statistics or approaching 0, the more accurately the model represents the data.
  
 
