@@ -1,1 +1,1 @@
-This folder contains the data
+This folder contains the data for this report. The data includes the primary source of data, the Advertising dataset (authored by James and others). Other files are either .Rdata or .txt files created from the R scripts using either `save()` or the `sink()` function. 
