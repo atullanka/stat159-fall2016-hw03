@@ -132,8 +132,28 @@ library(xtable)
 print(xtable(cor(advert[2:5]), caption = 'Correlation Matrix for Sales on Newspaper, TV and Radio'), comment = FALSE)
 ```
 
-Finally, the matrix of 
+Finally, the matrix of coefficients can be distributed on a scatter plot:
 
+![Figure 8: Scatterplot Matrix](../images/scatterplot-matrix.png)
+
+The Quality Indices for the Multiple Linear Regression are:
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+source('../code/functions/regression-functions.R')
+All.Table = matrix(nrow = 3, ncol = 2)
+Quantity = c("RSE", "R^2", "F-statistic")
+All.Value = c(residual_std_error(lm(advert$Sales ~ advert$Newspaper+advert$TV+advert$Radio)), r_squared(lm(advert$Sales ~ advert$Newspaper+advert$TV+advert$Radio)), f_statistic(lm(advert$Sales ~ advert$Newspaper+advert$TV+advert$Radio)))
+All.Table[,1] = Quantity
+All.Table[,2] = All.Value
+colnames(TV.Table) = c('Quantity', 'Value')
+print(xtable(All.Table, caption = "Quality Indices of the Multiple Linear Regression of Sales and Newspaper, TV and Radio"), comment = FALSE)
+```
+
+3 more plots can represent the linearity of the relationship between Sales and the 3 media outlets: 
+
+![Figure 9: Scatterplot Matrix](../images/residual-plot.png)
+![Figure 10: Scatterplot Matrix](../images/normal-qq-plot.png)
+![Figure 11: Scatterplot Matrix](../images/scale-location-plot.png)
 
 # Conclusions
 
