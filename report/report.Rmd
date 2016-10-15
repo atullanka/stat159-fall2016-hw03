@@ -116,6 +116,24 @@ print(xtable(News.Table, caption = "Quality Indices of Regression of Sales and N
 
 ## Multiple Regression Analysis
 
+Fitting all 4 variables to a simple linear regression model, the regression coefficients are calculated:
+
+```{r,echo=FALSE,results='asis',message=FALSE,fig.align='center'}
+advert <- read.csv('http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv')
+library(xtable)
+print(xtable(lm(advert$Sales ~ advert$TV + advert$Radio + advert$Newspaper), caption = 'Simple regression of Sales on Newspaper, TV and Radio'), comment = FALSE)
+```
+
+The correlation matrix is as follows:
+
+```{r,echo=FALSE,results='asis',message=FALSE,fig.align='center'}
+advert <- read.csv('http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv')
+library(xtable)
+print(xtable(cor(advert[2:5]), caption = 'Correlation Matrix for Sales on Newspaper, TV and Radio'), comment = FALSE)
+```
+
+Finally, the matrix of 
+
 
 # Conclusions
 
